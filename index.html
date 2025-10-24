@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>МПИ</title>
+  <meta name="description" content="Программа для работы с командными словами и словами данных магистрального последовательного интерфейса">
+  <meta name="keyword" content="магистральный последовательный интерфейс, МПИ, ГОСТ 52070, командное слово, слово данных">
+  <meta name="author" content="Анна Куликова">
+  <script src="js/colorModes.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Переключатель темы-->
+  <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Переключатель темы (авто)">
+      <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="sprite.svg#circle-half"></use></svg>
+      <span class="visually-hidden" id="bd-theme-text">Переключатель темы</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="light" aria-pressed="true">
+          <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="sprite.svg#sun-fill"></use></svg>
+          Светлая
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="sprite.svg#check2"></use></svg>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+          <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="sprite.svg#moon-stars-fill"></use></svg>
+          Темная
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="sprite.svg#check2"></use></svg>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="false">
+          <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="sprite.svg#circle-half"></use></svg>
+          Авто
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="sprite.svg#check2"></use></svg>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <header class="bg-body-secondary mb-4">
+    <div class="container py-2">
+      <div class="d-flex flex-wrap align-items-center justify-content-center">
+        <a href="index.html" aria-current="page" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
+          <span class="fw-bold fs-4">МПИ</span>
+        </a>
+        <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+          <li>
+            <a href="index.html" aria-current="page" class="nav-link text-primary-emphasis">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="sprite.svg#home"></use></svg>
+              Главная
+            </a>
+          </li>
+          <li>
+            <a href="html/command.html" class="nav-link link-body-emphasis"> 
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="sprite.svg#tools"></use></svg>
+              Командное слово
+            </a>
+          </li>
+          <li>
+            <a href="html/data.html" class="nav-link link-body-emphasis">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="sprite.svg#grid"></use></svg>
+              Слово данных
+            </a>
+          </li>
+          <li>
+            <a href="html/pack.html" class="nav-link link-body-emphasis">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="sprite.svg#table"></use></svg>
+              Пакет данных
+            </a>
+          </li>
+          <li>
+            <a href="html/help.html" class="nav-link link-body-emphasis">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="sprite.svg#question-mark"></use></svg>
+              Справка
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="container">
+      <h1 class="border-bottom pb-2 mb-3 text-center">Магистральный последовательный интерфейс</h1>
+      <dl>
+        <dt class="fs-4 mb-2">
+          Магистральный последовательный интерфейс
+        </dt>
+        <dd>
+          Это совокупность технических средств и правил, 
+          которые обеспечивают обмен информацией между абонентами интерфейса 
+          последовательным кодом по общей информационной магистрали. 
+          Требования к реализации интерфейса описаны в 
+            <a href="https://protect.gost.ru/document.aspx?control=7&id=129942" rel="noopener noreferrer" target="_blank" class="link-primary">ГОСТ Р 52070</a>.
+        </dd>
+        <dt class="fs-4 mb-2">
+          ГОСТ Р 52070-2003
+        </dt>
+        <dd>
+          Государственный стандарт Российской Федерации, который называется 
+          «Интерфейс магистральный последовательный. Системы электронных модулей. Общие требования».
+          Документ распространяется на магистральный последовательный интерфейс с централизованным управлением. 
+          Область применения стандарта — системы электронных модулей, где интерфейс используется для обмена 
+          информацией между различными блоками. Аналогом является стандарт MIL-STD-1553B.
+        </dd>
+      </dl>
+    </section>
+
+    <section class="container mb-3">
+      <h2 class="border-bottom pb-2 mb-3">Использование программы</h2>
+        <p>Данная программа позволяет упростить работу с командными словами и словами данных, 
+          предоставляя инструменты для написания масок битов переменных для их последующей распарски или упаковки, 
+          а так же для создания командных слов и их расшифровки. 
+          Программа не поддерживает команды управления и предполагает, что ваш протокол используется для приемо-передачи данных.
+        </p>
+        <div class="row g-4 py-3 row-cols-1 row-cols-lg-3">
+          <div class="col d-flex align-items-start">
+            <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+              <svg class="bi" width="1em" height="1em"><use href="sprite.svg#tools"></use></svg>
+            </div>
+            <div>
+              <h3 class="text-body-emphasis">Командное слово</h3>
+              <p>Введите командное слово, чтобы разобрать его на составляющие. Создавайте командные слова из введенных в соответсвующие ячейки данных.</p>
+              <a href="html/command.html" class="btn btn-primary">
+                Перейти
+              </a>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+              <svg class="bi" width="1em" height="1em"><use href="sprite.svg#grid"></use></svg>
+            </div>
+            <div>
+              <h3 class="text-body-emphasis">Слово данных</h3>
+              <p>Запишите ваши переменные в слово данных, чтобы создать для них маски переменых и маски сдвига битов по шаблону.</p>
+              <a href="html/data.html" class="btn btn-primary">
+                Перейти
+              </a>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+              <svg class="bi" width="1em" height="1em"><use href="sprite.svg#table"></use></svg>
+            </div>
+            <div>
+              <h3 class="text-body-emphasis">Пакет данных</h3>
+              <p>Позволит сформировать маски для всего пакета данных. Сформируйте необходимую таблицу и запишите в нее ваши переменые.</p>
+              <a href="html/pack.html" class="btn btn-primary">
+                Перейти
+              </a>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="container">
+      <div class="alert alert-success">
+        <h3 class="alert-heading">Помощь</h3>
+        <p>
+          Для получения более подробной информации об использовании данной программы и изучения краткого руководства посетите страницу со 
+          <a href="html/help.html" class="link-success">справкой</a>.
+        </p>
+        <hr>
+        <p class="mb-0">
+          Если вы никогда ранее не работали с МПИ, рекомендуем начать изучение с 
+          <a href="https://protect.gost.ru/document.aspx?control=7&id=129942" rel="noopener noreferrer" target="_blank" class="link-success">ГОСТа</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-body-secondary mt-4 py-3">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="index.html" aria-current="page" class="nav-link px-2 text-body-secondary">Главная</a></li>
+      <li class="nav-item"><a href="html/command.html" class="nav-link px-2 text-body-secondary">Командное слово</a></li>
+      <li class="nav-item"><a href="html/data.html" class="nav-link px-2 text-body-secondary">Слово данных</a></li>
+      <li class="nav-item"><a href="html/pack.html" class="nav-link px-2 text-body-secondary">Пакет данных</a></li>
+      <li class="nav-item"><a href="html/help.html" class="nav-link px-2 text-body-secondary">Справка</a></li>
+    </ul>
+    <p class="text-center text-body-secondary">© 2025 Куликова Анна</p>
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

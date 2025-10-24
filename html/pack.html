@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>МПИ</title>
+  <meta name="description" content="Программа для работы с командными словами и словами данных магистрального последовательного интерфейса">
+  <meta name="keyword" content="магистральный последовательный интерфейс, МПИ, ГОСТ 52070, командное слово, слово данных">
+  <meta name="author" content="Анна Куликова">
+  <script src="../js/colorModes.js"></script>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <!-- Переключатель темы-->
+  <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Переключатель темы (авто)">
+      <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="../sprite.svg#circle-half"></use></svg>
+      <span class="visually-hidden" id="bd-theme-text">Переключатель темы</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="light" aria-pressed="true">
+          <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="../sprite.svg#sun-fill"></use></svg>
+          Светлая
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="../sprite.svg#check2"></use></svg>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+          <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="../sprite.svg#moon-stars-fill"></use></svg>
+          Темная
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="../sprite.svg#check2"></use></svg>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="false">
+          <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="../sprite.svg#circle-half"></use></svg>
+          Авто
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="../sprite.svg#check2"></use></svg>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <header class="bg-body-secondary mb-4">
+    <div class="container py-2">
+      <div class="d-flex flex-wrap align-items-center justify-content-center">
+        <a href="../index.html" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
+          <span class="fw-bold fs-4">МПИ</span>
+        </a>
+        <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+          <li>
+            <a href="../index.html" class="nav-link link-body-emphasis">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="../sprite.svg#home"></use></svg>
+              Главная
+            </a>
+          </li>
+          <li>
+            <a href="command.html" class="nav-link link-body-emphasis"> 
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="../sprite.svg#tools"></use></svg>
+              Командное слово
+            </a>
+          </li>
+          <li>
+            <a href="data.html" class="nav-link link-body-emphasis">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="../sprite.svg#grid"></use></svg>
+              Слово данных
+            </a>
+          </li>
+          <li>
+            <a href="pack.html" aria-current="page" class="nav-link text-primary-emphasis">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="../sprite.svg#table"></use></svg>
+              Пакет данных
+            </a>
+          </li>
+          <li>
+            <a href="help.html" class="nav-link link-body-emphasis">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="../sprite.svg#question-mark"></use></svg>
+              Справка
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <h1 class="visually-hidden">Магистральный последовательный интерфейс</h1>
+    
+    <section class="container">
+      <h2 class="border-bottom pb-2 mb-4 text-center">Пакет данных</h2>
+      <p>Эта программа позволит работать сразу со всем пакетом данных в зависимости от командного слова.</p>
+      <ol>
+        <li>Укажите настройки, введите командное слово и нажмите на кнопку "Создать таблицу".</li>
+        <li>Объяедините ячейки таблицы под ваши переменные и нажмите на кнопку "Заполнить переменные".</li>
+        <li>Введите названия переменных в необходимые места. Если в пакете присутсвуют пустые биты, оставтье их пустыми.</li>
+        <li>Далее нажмите на кнопку "Рассчитать маски"</li>
+      </ol>
+      <p>
+        Для более подробного руководства обратитесь к 
+        <a href="" class="link-primary">справке</a>
+        .
+      </p>
+      <span class="badge bg-warning-subtle text-warning-emphasis rounded-pill mb-2">Примечание:</span>
+      <p>Нумерация слов данных в таблице соответвует индексу массива (т.е. начинается с нуля).</p>
+    </section>
+
+    <section class="container mb-4">
+      <h3 class="border-bottom pb-2 mb-3">Настройка</h3>
+      <div class="border br-2 p-3 mb-4">
+        <div class="d-flex gap-4 flex-wrap">
+          <div class="vstack gap-2 text-center">
+            <span>Формат маски переменной</span>
+            <span id="varMaskFormat" class="badge bg-info-subtle border border-info-subtle text-info-emphasis rounded-pill fs-6">
+              DW[dw]_[var]_Msk [msk]
+            </span>
+          </div>
+          <div class="vstack gap-2 text-center">
+            <span>Формат маски сдвига битов</span>
+            <span id="posMaskFormat" class="badge bg-info-subtle border border-info-subtle text-info-emphasis rounded-pill fs-6">
+              DW[dw]_[var]_Pos [msk]
+            </span>
+          </div>
+        </div>
+        <div class="mt-4">
+          <button type="button" id="changeMaskFormat" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#maskFormatModal">Изменить</button>
+          <button type="button" id="defaultMaskFormat" class="btn btn-outline-secondary">По умолчанию</button> 
+        </div>
+      </div>
+      <div class="modal fade bg-body" id="maskFormatModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="changeMasks" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content shadow bg-body-tertiary">
+            <div class="modal-header">
+              <h1 class="modal-title fs-4" id="changeMasks">Изменение масок</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="">
+                <p>Введите формат масок используя любые символы по вашему усмотрению. Используейте следующие обозначения:<br>
+                  <span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">[dw]</span> 
+                  - для указания номера слова данных,<br>
+                  <span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">[var]</span> 
+                  - для вставки имени переменной,<br>
+                  <span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">[msk]</span>
+                  - для вставки рассчитанной маски битов.
+                </p>
+                <label for="inputVarMaskFormat" class="mb-2">Формат маски переменных</label>
+                <input type="text" class="form-control mb-3" id="inputVarMaskFormat">
+                <label for="inputPosMaskFormat" class="mb-2">Формат маски сдвига переменных</label>
+                <input type="text" class="form-control" id="inputPosMaskFormat">
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+              <button type="button" class="btn btn-primary" id="saveMaskFormat" data-bs-dismiss="modal">Сохранить</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex gap-2 my-4">
+        <label class="d-flex flex-column col-6 gap-2 p-3 border br-2 switch">
+          <div class="d-flex align-items-center">
+            <svg class="bi me-3" width="24" height="24"><use href="../sprite.svg#cpu-fill"></use></svg>
+            <span class="fs-5 fw-bold">Контроллер шины</span>
+          </div>
+          <p class="d-block fs-6 text-body-secondary m-0">Маски рассчитаются для пакета на стороне контроллера шины в соответсвии с введенным командным словом</p>
+          <input class="visually-hidden" type="radio" name="target" value="busController" checked>
+        </label>
+        <label class="d-flex flex-column col-6 gap-2 p-3 border br-2 switch">
+          <div class="d-flex align-items-center">
+            <svg class="bi me-3" width="24" height="24"><use href="../sprite.svg#collection"></use></svg>
+            <span class="fs-5 fw-bold">Оконечное устройство</span>
+          </div>
+          <p class="d-block fs-6 text-body-secondary m-0">Маски рассчитаются для пакета на стороне оконечного устройства в соответсвии с введенным командным словом</p>
+          <input class="visually-hidden" type="radio" name="target" value="targetDevise">
+        </label>
+      </div>
+      <form action="" class="mb-4 border br-2 p-3" id="parseForm">
+        <div class="d-flex gap-2 my-3">
+            <label for="parseBin" class="form-label m-0 badge border border-primary-subtle text-primary-emphasis rounded-pill fs-6 switch"> 
+            BIN
+            <input type="radio" class="visually-hidden" name="parseNumeralSystem" id="parseBin" value="2">
+          </label>
+          <label for="parseDec" class="form-label m-0 badge border border-primary-subtle text-primary-emphasis rounded-pill fs-6 switch">
+            DEC
+            <input type="radio" class="visually-hidden" name="parseNumeralSystem" id="parseDec" value="10">
+          </label>
+          <label for="parseHex" class="form-label m-0 badge border border-primary-subtle text-primary-emphasis rounded-pill fs-6 switch">
+            HEX
+            <input type="radio" class="visually-hidden" name="parseNumeralSystem" id="parseHex" value="16" checked> 
+          </label>
+        </div>
+        <label for="commandWord" class="form-label">Введите командное слово</label>
+        <input type="text" class="form-control text-uppercase mb-4" id="commandWord" placeholder="FF20" maxlength="4">
+        <button type="button" class="btn btn-outline-secondary" id="commandClear">Очистить</button> 
+        <div id="parseErrorMassages"></div>
+      </form>
+      <button class="btn btn-primary" id="createTable">Создать таблицу</button>
+    </section>
+
+    <section class="container">
+      <h3 class="border-bottom pb-2 mb-4">Пакет</h3>
+      <div id="tableWrapper">Укажите настройки пакета и нажмите на кнопку "Создать таблицу"</div>
+      <template id="tableWrapperTemplate">
+        <button type="button" id="deleteTable" class="btn btn-outline-secondary mb-4">Удалить таблицу</button>
+        <div class="overflow-x-auto mb-4">
+          <table class="table table-bordered table-striped" id="tablePack">
+            <thead>
+              <tr>
+                <th scope="col">№</th>
+                <th scope="col">15</th>
+                <th scope="col">14</th>
+                <th scope="col">13</th>
+                <th scope="col">12</th>
+                <th scope="col">11</th>
+                <th scope="col">10</th>
+                <th scope="col">9</th>
+                <th scope="col">8</th>
+                <th scope="col">7</th>
+                <th scope="col">6</th>
+                <th scope="col">5</th>
+                <th scope="col">4</th>
+                <th scope="col">3</th>
+                <th scope="col">2</th>
+                <th scope="col">1</th>
+                <th scope="col">0</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- JS -->
+            </tbody>
+          </table>
+        </div>
+        <button type="button" class="btn btn-primary" id="addVars">Заполнить переменные</button>
+        <button type="button" class="btn btn-secondary" id="poolBits">Объединить ячейки</button> 
+      </template>
+    </section>
+
+    <section class="container mt-4">
+      <h3 class="visually-hidden">Маски переменных</h3>
+      <div id="masksOutput" class="d-flex flex-column gap-4">
+        <!-- JS  -->
+      </div>
+      <template id="masksOutputTemplate">
+        <div>
+          <span id="actionTag" class="badge bg-info-subtle border border-info-subtle text-info-emphasis rounded-pill fs-6 mt-2">
+            <!-- JS --> 
+          </span>
+        </div>
+        <output class="d-flex flex-column gap-1"></output>
+        <div class="mb-4">
+          <button type="button" id="copyMasks" class="btn btn-primary">Скопировать</button>
+          <button type="button" id="clearMasks" class="btn btn-outline-secondary">Очистить</button> 
+        </div>
+      </template>
+    </section>
+
+  </main>
+
+  <footer class="bg-body-secondary mt-auto py-3">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="../index.html" class="nav-link px-2 text-body-secondary">Главная</a></li>
+      <li class="nav-item"><a href="command.html" class="nav-link px-2 text-body-secondary">Командное слово</a></li>
+      <li class="nav-item"><a href="data.html" class="nav-link px-2 text-body-secondary">Слово данных</a></li>
+      <li class="nav-item"><a href="pack.html" aria-current="page" class="nav-link px-2 text-body-secondary">Пакет данных</a></li>
+      <li class="nav-item"><a href="help.html" class="nav-link px-2 text-body-secondary">Справка</a></li>
+    </ul>
+    <p class="text-center text-body-secondary">© 2025 Куликова Анна</p>
+  </footer>
+
+  <script src="../js/bootstrap.bundle.min.js"></script> 
+  <script src="../js/packagePage.js" type="module"></script>
+
+</body>
+</html>

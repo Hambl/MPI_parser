@@ -1,0 +1,130 @@
+/* 
+    Файл общих стилей сайта, применяемый для всех страниц
+*/
+
+body,
+div,
+form,
+section {
+    box-sizing: border-box;
+}
+
+caption {
+    caption-side: top;
+    text-align: center;
+}
+
+.pointer-events-none {
+    pointer-events: none;
+}
+
+.bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+}
+
+.btn-bd-primary {
+    --bd-violet-bg: #712cf9;
+    --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-violet-bg);
+    --bs-btn-border-color: var(--bd-violet-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #6528e0;
+    --bs-btn-hover-border-color: #6528e0;
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #5a23c8;
+    --bs-btn-active-border-color: #5a23c8;
+}
+
+.bd-mode-toggle {
+    z-index: 1500;
+}
+
+.bd-mode-toggle .dropdown-menu .active .bi {
+    display: block !important;
+}
+
+.br-0 {
+    border-radius: 0 !important;
+}
+  
+.br-1 {
+    border-radius: 0.25rem !important;
+}
+  
+.br-2 {
+    border-radius: 0.5rem !important;
+}
+  
+.br-3 {
+    border-radius: 1rem !important;
+}
+  
+.br-4 {
+  border-radius: 1.5rem !important;
+}
+  
+.br-5 {
+    border-radius: 3rem !important;
+}
+
+.text-small { /* В хедере*/
+    font-size: 85%;
+}
+
+.icon-square { /*Только на главной*/
+    width: 3rem;
+    height: 3rem;
+    border-radius: .75rem;
+}
+
+.code-block {
+    font-size: .875rem;
+    color: var(--bs-code-color);
+    font-family: var(--bs-font-monospace);
+}
+
+.switch:has(input:checked) {
+    scale: 1;
+    background-color: var(--bs-primary-bg-subtle);
+  }
+
+.switch:has(input) {
+    scale: 0.9;
+    transition: scale 0.1s;
+}
+  
+.switch:has(input):hover {
+    cursor: pointer;
+    scale: 1;
+}
+  
+.switch:has(input:focus-visible) {
+    outline: 3px solid var(--bs-primary-border-subtle);
+}
+
+tbody.selectable td.is-selected {
+  background-color: var(--bs-secondary) !important;
+}
+
+tbody.selectable {
+  cursor: cell;
+}
+
+tbody.selectable th:hover {
+  cursor: alias;
+}
+
+#varNumber {
+  cursor: pointer;
+}
+
+#putTransmit,
+#putReseive {
+  text-wrap: nowrap;
+}
+

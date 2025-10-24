@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>МПИ</title>
+  <meta name="description" content="Программа для работы с командными словами и словами данных магистрального последовательного интерфейса">
+  <meta name="keyword" content="магистральный последовательный интерфейс, МПИ, ГОСТ 52070, командное слово, слово данных">
+  <meta name="author" content="Анна Куликова">
+  <script src="../js/colorModes.js"></script>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <!-- Переключатель темы-->
+  <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Переключатель темы (авто)">
+      <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="../sprite.svg#circle-half"></use></svg>
+      <span class="visually-hidden" id="bd-theme-text">Переключатель темы</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="light" aria-pressed="true">
+          <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="../sprite.svg#sun-fill"></use></svg>
+          Светлая
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="../sprite.svg#check2"></use></svg>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+          <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="../sprite.svg#moon-stars-fill"></use></svg>
+          Темная
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="../sprite.svg#check2"></use></svg>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="false">
+          <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="../sprite.svg#circle-half"></use></svg>
+          Авто
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="../sprite.svg#check2"></use></svg>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <header class="bg-body-secondary mb-4">
+    <div class="container py-2">
+      <div class="d-flex flex-wrap align-items-center justify-content-center">
+        <a href="../index.html" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
+          <span class="fw-bold fs-4">МПИ</span>
+        </a>
+        <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+          <li>
+            <a href="../index.html" class="nav-link link-body-emphasis">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="../sprite.svg#home"></use></svg>
+              Главная
+            </a>
+          </li>
+          <li>
+            <a href="command.html" aria-current="page" class="nav-link text-primary-emphasis"> 
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="../sprite.svg#tools"></use></svg>
+              Командное слово
+            </a>
+          </li>
+          <li>
+            <a href="data.html" class="nav-link link-body-emphasis">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="../sprite.svg#grid"></use></svg>
+              Слово данных
+            </a>
+          </li>
+          <li>
+            <a href="pack.html" class="nav-link link-body-emphasis">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="../sprite.svg#table"></use></svg>
+              Пакет данных
+            </a>
+          </li>
+          <li>
+            <a href="help.html" class="nav-link link-body-emphasis">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="../sprite.svg#question-mark"></use></svg>
+              Справка
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="visually-hidden">Магистральный последовательный интерфейс</h1>
+
+    <section class="container">
+      <h2 class="border-bottom pb-2 mb-4 text-center">Командное слово</h2>
+      <p>Эта программа позволит разобрать командное слово на составляющие, или наоборот собрать его из адреса, направления передачи, подадреса и количества слов данных.</p> 
+      <ol>
+        <li>Выберите систему счисления с которой вам удобно работать.</li>
+        <li>Корректно заполните поля данных. Для сборки командного слова вы можете использовать кнопки для быстрого вода некоторых значений.</li>
+        <li>Нажмите на кнопку "Разобрать" (в случае разбора командного слова) или "Собрать" (в случае сборки командного слова из составляющих).</li>
+      </ol>
+
+      <p>Для более подробной информации обратитесь к <a href="help.html" class="link-primary">справке</a>.</p>
+
+      <span class="badge bg-warning-subtle text-warning-emphasis rounded-pill mb-2">Примечание:</span>
+      <p>
+        В соответсвии с ГОСТ Р 52070 значение числа СД
+        <span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">00000</span>
+        соответсвует маскимальному количеству слов данных - 32.
+      </p>
+    </section>
+
+    <section class="container mb-4">
+      <h3 class="border-bottom pb-2 mb-4">Разобрать</h3>
+      <form action="" class="mb-4" id="parseForm">
+        <div class="d-flex gap-2 my-3">
+            <label for="parseBin" class="form-label m-0 badge border border-primary-subtle text-primary-emphasis rounded-pill fs-6 switch"> 
+            BIN
+            <input type="radio" class="visually-hidden" name="parseNumeralSystem" id="parseBin" value="2">
+          </label>
+          <label for="parseDec" class="form-label m-0 badge border border-primary-subtle text-primary-emphasis rounded-pill fs-6 switch">
+            DEC
+            <input type="radio" class="visually-hidden" name="parseNumeralSystem" id="parseDec" value="10">
+          </label>
+          <label for="parseHex" class="form-label m-0 badge border border-primary-subtle text-primary-emphasis rounded-pill fs-6 switch">
+            HEX
+            <input type="radio" class="visually-hidden" name="parseNumeralSystem" id="parseHex" value="16" checked> 
+          </label>
+        </div>
+        <label for="commandWord" class="form-label">Введите командное слово</label>
+        <input type="text" class="form-control text-uppercase mb-4" id="commandWord" placeholder="FF20" maxlength="4">
+        <button type="button" class="btn btn-primary" id="commandPars">Разобрать</button>
+        <button type="button" class="btn btn-outline-secondary" id="parseCommandClear">Очистить</button> 
+        <div id="parseErrorMassages"></div>
+      </form>
+
+      <div id="parseOutput">
+          <!-- JS -->
+      </div>
+      <template id="parseOutputTemplate">
+        <div class="d-flex gap-2 my-3" id="parseTags">
+          <!-- JS -->
+        </div>
+          <table class="table table-hover table-striped mb-4">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th scope="col">Адрес ОУ</th>
+              <th scope="col">RX/TX</th>
+              <th scope="col">Подадрес</th>
+              <th scope="col">Число СД</th>
+            </tr>
+          </thead>
+          <tbody class="text-uppercase">
+            <tr id="rowBin">
+              <th scope="row">BIN</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr id="rowDec">
+              <th scope="row">DEC</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr id="rowHex">
+              <th scope="row">HEX</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-outline-secondary" id="parseOutputClear">Очистить</button> 
+      </template>
+      
+    </section>
+
+    <section class="container">
+      <h3 class="border-bottom pb-2 mb-4">Собрать</h3>
+      <form action="" class="mb-4" id="packForm">
+        <div class="d-flex gap-2 my-3">
+          <label for="packBin" class="form-label m-0 badge border border-primary-subtle text-primary-emphasis rounded-pill fs-6 switch"> 
+            BIN
+            <input type="radio" class="visually-hidden" name="packNumeralSystem" id="packBin" value="2" checked>
+          </label>
+          <label for="packDec" class="form-label m-0 badge border border-primary-subtle text-primary-emphasis rounded-pill fs-6 switch">
+            DEC
+            <input type="radio" class="visually-hidden" name="packNumeralSystem" id="packDec" value="10">
+          </label>
+          <label for="packHex" class="form-label m-0 badge border border-primary-subtle text-primary-emphasis rounded-pill fs-6 switch">
+            HEX
+            <input type="radio" class="visually-hidden" name="packNumeralSystem" id="packHex" value="16"> 
+          </label>
+        </div>
+        <table class="table table-striped mb-4">
+          <thead>
+            <th>
+              <label for="packAddr">Адрес</label>
+            </th>
+            <th>
+              <label for="packTransmit">RX/TX</label>
+            </th>
+            <th>
+              <label for="packSubaddr">Подадрес</label>
+            </th>
+            <th>
+              <label for="packDataWordNum">Число СД</label>
+            </th>
+          </thead>
+          <tbody>
+            <tr id="packInputs">
+              <td>
+                <input type="text" class="form-control text-uppercase" id="packAddr" maxlength="5" placeholder="11011"></td>
+              <td>
+                <input type="text" class="form-control text-uppercase" id="packTransf" maxlength="1" placeholder="0"></td>
+              <td>
+                <input type="text" class="form-control text-uppercase" id="packSubaddr" maxlength="5" placeholder="00001"></td>
+              <td>
+                <input type="text" class="form-control text-uppercase" id="packDataWordNum" maxlength="5" placeholder="10001"></td>
+            </tr>
+            <tr>
+              <td>
+                <button type="button" class="btn btn-outline-primary" id="putBroadcast">Групповой</button>
+              </td>
+              <td class="d-flex flex-wrap gap-2">
+                <!-- <button type="button" class="btn btn-outline-primary" id="putReseive" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Передача данных из контроллера шины в конечное устройство">КШ->ОУ</button> -->
+                <button type="button" class="btn btn-outline-primary" id="putReseive">КШ->ОУ</button>
+                <button type="button" class="btn btn-outline-primary" id="putTransmit">ОУ->КШ</button>
+              </td>
+              <td>
+
+              </td>
+              <td class="d-flex flex-wrap gap-2">
+                <button type="button" class="btn btn-outline-primary" id="putMin">Мин.</button>
+                <button type="button" class="btn btn-outline-primary" id="putMax">Макс.</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" id="packCommand">Собрать</button>
+        <button type="button" class="btn btn-outline-secondary" id="packCommandClear">Очистить</button> 
+        <div id="packErrorMassages">
+          <!-- JS -->
+        </div>
+      </form>
+
+      <div class="mb-4">
+        <div id="packOutput">
+          <!-- JS -->
+        </div>
+        <template id="packOutputTemplate">
+          <table class="table table-hover table-striped mb-4">
+            <tbody>
+              <thead>
+                <tr>
+                  <th>HEX</th>
+                  <th>DEC</th>
+                  <th>BIN</th>
+                </tr>
+              </thead>
+              <tbody class="text-uppercase">
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </tbody>
+          </table>
+          <button type="button" class="btn btn-outline-secondary" id="packOutputClear">Очистить</button> 
+        </template>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="bg-body-secondary mt-4 py-3">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="../index.html" class="nav-link px-2 text-body-secondary">Главная</a></li>
+      <li class="nav-item"><a href="command.html" aria-current="page" class="nav-link px-2 text-body-secondary">Командное слово</a></li>
+      <li class="nav-item"><a href="data.html" class="nav-link px-2 text-body-secondary">Слово данных</a></li>
+      <li class="nav-item"><a href="pack.html" class="nav-link px-2 text-body-secondary">Пакет данных</a></li>
+      <li class="nav-item"><a href="help.html" class="nav-link px-2 text-body-secondary">Справка</a></li>
+    </ul>
+    <p class="text-center text-body-secondary">© 2025 Куликова Анна</p>
+  </footer>
+
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="../js/commandPage.js"></script>
+
+</body>
+</html>

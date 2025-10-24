@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>МПИ</title>
+  <meta name="description" content="Программа для работы с командными словами и словами данных магистрального последовательного интерфейса">
+  <meta name="keyword" content="магистральный последовательный интерфейс, МПИ, ГОСТ 52070, командное слово, слово данных">
+  <meta name="author" content="Анна Куликова">
+  <script src="../js/colorModes.js"></script>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <!-- Переключатель темы-->
+  <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Переключатель темы (авто)">
+      <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="../sprite.svg#circle-half"></use></svg>
+      <span class="visually-hidden" id="bd-theme-text">Переключатель темы</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="light" aria-pressed="true">
+          <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="../sprite.svg#sun-fill"></use></svg>
+          Светлая
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="../sprite.svg#check2"></use></svg>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+          <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="../sprite.svg#moon-stars-fill"></use></svg>
+          Темная
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="../sprite.svg#check2"></use></svg>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="false">
+          <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="../sprite.svg#circle-half"></use></svg>
+          Авто
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="../sprite.svg#check2"></use></svg>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <header class="bg-body-secondary mb-4">
+    <div class="container py-2">
+      <div class="d-flex flex-wrap align-items-center justify-content-center">
+        <a href="../index.html" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
+          <span class="fw-bold fs-4">МПИ</span>
+        </a>
+        <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+          <li>
+            <a href="../index.html" class="nav-link link-body-emphasis">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="../sprite.svg#home"></use></svg>
+              Главная
+            </a>
+          </li>
+          <li>
+            <a href="command.html" class="nav-link link-body-emphasis"> 
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="../sprite.svg#tools"></use></svg>
+              Командное слово
+            </a>
+          </li>
+          <li>
+            <a href="data.html" class="nav-link link-body-emphasis">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="../sprite.svg#grid"></use></svg>
+              Слово данных
+            </a>
+          </li>
+          <li>
+            <a href="pack.html" class="nav-link text-primary-emphasis">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="../sprite.svg#table"></use></svg>
+              Пакет данных
+            </a>
+          </li>
+          <li>
+            <a href="help.html" class="nav-link link-body-emphasis" aria-current="page">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use href="../sprite.svg#question-mark"></use></svg>
+              Справка
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="visually-hidden">Магистральный последовательный интерфейс</h1>
+    <h2 class="border-bottom pb-2 mb-4 text-center">Справка</h2>
+
+    <section class="container">
+      <h3 class="border-bottom pb-2 mb-3">Оглавление</h3>
+      <ul>
+        <li><a href="#term" class="link-primary">Термины и сокращения</a></li>
+        <li><a href="#command" class="link-primary">Командное слово</a></li>
+        <li><a href="#data" class="link-primary">Слово данных</a></li>
+        <li><a href="#package" class="link-primary">Пакет данных</a></li>
+        <li><a href="#maskFormat" class="link-primary">Формат маски</a></li>
+        <li><a href="#maskTemplate" class="link-primary">Пример использования масок</a></li>
+        <li><a href="#links" class="link-primary">Ссылки</a></li>
+      </ul>
+    </section>
+
+    <section class="container" id="term">
+      <h3 class="border-bottom pb-2 mb-3">Термины и сокращения</h3>
+      <dl>
+        <dt class="text-info-emphasis">МПИ</dt>
+        <dd>Магистральный последовательный интерфейс</dd>
+        <dt class="text-info-emphasis">КШ</dt>
+        <dd>Контроллер шины, обеспечивющий управление обменом информации</dd>
+        <dt class="text-info-emphasis">ОУ</dt>
+        <dd>Оконечное устройство, которое функционирует в соответствии с командами контроллера шины</dd>
+        <dt class="text-info-emphasis">КС</dt>
+        <dd>Командное слово, с помощью которого контроллер шины может управлять приемо-передачей данных</dd>
+        <dt class="text-info-emphasis">СД</dt>
+        <dd>Слово данных, в котором содержится передаваемая информация</dd>
+        <dt class="text-info-emphasis">Пакет данных</dt>
+        <dd>Несколько слов данных, передающихся в одной пачке по одному командному слову</dd>
+      </dl>
+    </section>
+
+    <section class="container" id="command">
+      <h3 class="border-bottom pb-2 mb-3">Командное слово</h3>
+      <p>Вы можете выбрать удобную для вас систему счисления при работе с командными словами:</p>
+      <ul>
+        <li><span class="text-info-emphasis">BIN</span> - двоичная</li>
+        <li><span class="text-info-emphasis">DEC</span> - десятичная</li>
+        <li><span class="text-info-emphasis">HEX</span> - шестнадцатиричная</li>
+      </ul>
+
+      <table class="table table-bordered table-striped mb-4">
+        <caption>Структура командного слова</caption>
+        <thead>
+          <tr>
+            <th scope="row">Бит</th>
+            <td>15</td>
+            <td>14</td>
+            <td>13</td>
+            <td>12</td>
+            <td>11</td>
+            <td>10</td>
+            <td>9</td>
+            <td>8</td>
+            <td>7</td>
+            <td>6</td>
+            <td>5</td>
+            <td>4</td>
+            <td>3</td>
+            <td>2</td>
+            <td>1</td>
+            <td>0</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Значение</th>
+            <td colspan="5" class="text-center">Адрес</td>
+            <td colspan="1" class="text-center">TR</td>
+            <td colspan="5" class="text-center">Подадрес</td>
+            <td colspan="5" class="text-center">Число слов данных</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="ms-4">TR - направление передачи <span lang="en">transmit/reseive</span>.</p>
+
+      <table class="table table-striped mb-4">
+        <caption>Примеры командных слов</caption>
+        <thead>
+          <tr>
+            <th>HEX</th>
+            <th>DEC</th>
+            <th>BIN</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>C21</td>
+            <td>3105</td>
+            <td>0000110000100001</td>
+          </tr>
+          <tr>
+            <td>3A0F</td>
+            <td>14863</td>
+            <td>0011101000001111</td>
+          </tr>
+          <tr>
+            <td>FC80</td>
+            <td>64640</td>
+            <td>1111110010000000</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>Разборка</h4>
+      <p>Командное слово занимает 16 бит.</p>
+      <ol>
+        <li>Выберите систему счисления.</li>
+        <li>Введите командное слово.</li>
+        <li>Нажмите на кнопку "Разобрать".</li>
+      </ol>
+
+      <h4>Сборка</h4>
+      <p>Адрес оконечного устройства, подадрес и число слов данных занимают по 5 бит командного слова, а направление передачи - 1 бит.
+         В соответсвии с ГОСТ адрес
+         <span class="badge bg-info-subtle border border-info-subtle text-info-emphasis">11111</span>
+         является групповым, а число слов данных 
+         <span class="badge bg-info-subtle border border-info-subtle text-info-emphasis">00000</span>
+         равно 32 словам данных (максимально).
+      </p>
+      <ol>
+        <li>Выберите систему счисления.</li>
+        <li>Введите в соответсвующие поля адрес ОУ, направление передачи, подадрес и число СД.
+           Для быстрого набора некоторых данных воспользуйтесь кнопками:
+           <ul>
+            <li>
+              <span class="text-info-emphasis">Групповой</span> - групповой адрес. Используется для отправки сообщения всем ОУ.
+            </li>
+            <li>
+              <span class="text-info-emphasis">КШ->ОУ</span> - передача слов данных от контроллера шины в оконечное устройство.
+            </li>
+            <li>
+              <span class="text-info-emphasis">ОУ->КШ</span> - передача слов данных от оконечного устройства в контроллер шины.
+            </li>
+            <li>
+              <span class="text-info-emphasis">Мин.</span> - минимальное количество слов данных в пакете (1).
+            </li>
+            <li>
+              <span class="text-info-emphasis">Макс.</span> - максимальное количество слов данных в пакете (32).
+            </li>
+           </ul>
+        </li>
+        <li>Нажмите на кнопку "Собрать".</li>
+      </ol>
+    </section>
+
+    <section class="container" id="data">
+      <h3 class="border-bottom pb-2 mb-3">Слово данных</h3>
+      <p>Слово данных занимает 16 информационных бит.</p>
+      <ol>
+        <li>Выберите для чего вы хотите рассчитать маски: для упаковки в пакет или для распарски в переменные.</li>
+        <li>
+          Укажите формат маски, используемых в вашей прогамме. Для более подробной информации обратитесь к разделу <a href="#maskFormat" class="link-primary">формат маски</a>.
+          Например, для языка С удобно изменить формат указав в начале маски директиву <code>#define</code>.
+        </li>
+        <li>Укажите количество переменных в слове даных. Отсчет переменных начинается со старшего бита.</li>
+        <li>Заполните поля ввода, указав в каждой строке данных имя переменной и количество бит, которые она занимает.</li>
+        <li>Нажмите на кнопку "Рассчитать".</li>
+      </ol>
+      <h4>Примеры</h4>
+      <p>Пусть у нас есть следующее слово данных:</p>
+      <table class="table table-bordered table-striped mb-2">
+        <thead>
+          <tr>
+            <th scope="row" >Бит</th>
+            <td>15</td>
+            <td>14</td>
+            <td>13</td>
+            <td>12</td>
+            <td>11</td>
+            <td>10</td>
+            <td>9</td>
+            <td>8</td>
+            <td>7</td>
+            <td>6</td>
+            <td>5</td>
+            <td>4</td>
+            <td>3</td>
+            <td>2</td>
+            <td>1</td>
+            <td>0</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" >Переменная</th>
+            <td colspan="3">Error</td>
+            <td colspan="5">Count</td>
+            <td colspan="8">Timer</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Заполнить переменные нужно начиная со старших битов</p>
+      <div class="container">
+
+        <div class="row my-2">
+          <div class="col-1">
+            №
+          </div>
+          <div class="col-6">
+            Переменная
+          </div>
+          <div class="col-5">
+            Биты
+          </div>
+        </div>
+
+        <div class="row my-2">
+          <div class="col-1">1</div>
+          <div class="col-6">
+              <input type="text" class="form-control pointer-events-none" value="Error" readonly>
+          </div>
+          <div class="col-5">
+            <input type="number" class="form-control pointer-events-none" value="3" readonly>
+          </div>
+        </div>
+
+        <div class="row my-2">
+          <div class="col-1">2</div>
+          <div class="col-6">
+              <input type="text" class="form-control pointer-events-none" value="Count" readonly>
+          </div>
+          <div class="col-5">
+            <input type="number" class="form-control pointer-events-none" value="5" readonly>
+          </div>
+        </div>
+
+        <div class="row my-2">
+          <div class="col-1">3</div>
+          <div class="col-6">
+              <input type="text" class="form-control pointer-events-none" value="Timer" readonly>
+          </div>
+          <div class="col-5">
+            <input type="number" class="form-control pointer-events-none" value="8" readonly>
+          </div>
+        </div>
+
+      </div>
+      <p>
+        Если в вашем слове данных есть пустые биты, не используемые для переменных, их необходимо учитывать.
+        Для этого используйте специальное имя переменной 
+        <span class="badge bg-info-subtle border border-info-subtle text-info-emphasis">Empty</span>
+        (в любом регистре).
+      </p>
+      <p>Слово данных для примера:</p>
+      <table class="table table-bordered table-striped mb-2">
+        <thead>
+          <tr>
+            <th scope="row" >Бит</th>
+            <td>15</td>
+            <td>14</td>
+            <td>13</td>
+            <td>12</td>
+            <td>11</td>
+            <td>10</td>
+            <td>9</td>
+            <td>8</td>
+            <td>7</td>
+            <td>6</td>
+            <td>5</td>
+            <td>4</td>
+            <td>3</td>
+            <td>2</td>
+            <td>1</td>
+            <td>0</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" >Переменная</th>
+            <td colspan="3"></td>
+            <td colspan="3">Error</td>
+            <td colspan="4"></td>
+            <td colspan="6">Timer</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Между переменной Error и Timer 4 пустых бита, которые можно объединить в одну переменную Empty. Заполненные поля для этого слова:</p>
+      <div class="container">
+
+        <div class="row my-2">
+          <div class="col-1">
+            №
+          </div>
+          <div class="col-6">
+            Переменная
+          </div>
+          <div class="col-5">
+            Биты
+          </div>
+        </div>
+
+        <div class="row my-2">
+          <div class="col-1">1</div>
+          <div class="col-6">
+              <input type="text" class="form-control pointer-events-none" value="Error" readonly>
+          </div>
+          <div class="col-5">
+            <input type="number" class="form-control pointer-events-none" value="3" readonly>
+          </div>
+        </div>
+
+        <div class="row my-2">
+          <div class="col-1">2</div>
+          <div class="col-6">
+              <input type="text" class="form-control pointer-events-none" value="Empty" readonly>
+          </div>
+          <div class="col-5">
+            <input type="number" class="form-control pointer-events-none" value="4" readonly>
+          </div>
+        </div>
+
+        <div class="row my-2">
+          <div class="col-1">3</div>
+          <div class="col-6">
+              <input type="text" class="form-control pointer-events-none" value="Timer" readonly>
+          </div>
+          <div class="col-5">
+            <input type="number" class="form-control pointer-events-none" value="6" readonly>
+          </div>
+        </div>
+
+      </div>
+      <p>Если пустыми являются старшие биты - их можно не указывать вовсе. 
+        Необходимо учитывать лишь пустые биты, находящиеся в младших битах перед переменной и между переменными.
+      </p>
+    </section>
+
+    <section class="container" id="package">
+      <h3 class="border-bottom pb-2 mb-3">Пакет данных</h3>
+      <ol>
+        <li>Введите формат маски. Для более подробной информации о формате перейдите к пункту <a href="#maskFormat" class="link-primary">формат маски</a>.</li>
+        <li>Выберите устройство для которого вы пишете программу: КШ или ОУ.</li>
+        <li>Введите командное слово из вашего протокола приемо-передачи данных. Подробнее о <a href="#command" class="link-info">командных словах</a>.</li>
+        <li>Нажмите на кнопку "Создать таблицу". Верхняя строка таблицы означает номер бита, левая колонка - номер слова данных. 
+            Нумерация СД начинается с нуля, как в индексе массива. Биты нумеруются справа налево от младшего бита к старшему.
+        </li>
+        <li>Выделите ячейки таблицы и объедините их по переменым нажав на кнопку "Объединить ячейки". 
+            Несколько ячеек сразу можно выделить с использованием зажатой клавиши <kbd>Shift</kbd>.
+            Нажатие по номеру СД выделит всю строку таблицы, то есть все 16 бит.
+        </li>
+        <li>После формирования таблицы нажмите на кнопку "Записать переменные". Ячейки станут доступны для записи данных.</li>
+        <li>Когда заполните переменные, нажмите на кнопку "Рассчитать маски"</li>
+      </ol>
+      <p>Если в вашем пакете данных есть пустые биты, их можно не заполнять и полностью игнорировать. 
+         Главное указать правильное место и количество битов переменных в пакете.</p>
+    </section>
+
+    <section class="container" id="maskFormat">
+      <h3 class="border-bottom pb-2 mb-3">Формат маски</h3>
+      <p>Формат масок используется для удобства генерации масок переменных. 
+         Вы можете задать такой шаблон, чтобы маски можно было скопировать и сразу вставить в вашу программу без дополнительного форматирования.
+         Например, для языка С удобно написать в начале маски дерективу <code>#define</code>.
+      </p>
+      <p>Для фомата масок используются следующие обозначения для вставки соответсвующих данных:</p>
+      <ul>
+        <li><span class="text-info-emphasis">[var]</span> - имя переменной</li>
+        <li><span class="text-info-emphasis">[msk]</span> - рассчитанная маска битов, которые занимает переменная</li>
+        <li><span class="text-info-emphasis">[pos]</span> - рассчитанная маска позиции битов (сдвиг)</li>
+        <li><span class="text-info-emphasis">[ndw]</span> - номер слова данных (опционально для пакета данных)</li>
+      </ul>
+      <div class="d-flex flex-column">
+        <p>Обозначения [var], [msk], [pos] являются обязательными в формате маски.</p>
+        <p>Обозначение [ndw] используется только в форматах масок пакета данных и является не обязательным.</p>
+        <p class="mb-2">Пример формата маски для языка С:</p>
+        <code class="mb-2">
+          #define DW0_Timer_Msk 0x00FF<br>
+          #define DW0_Timer_Pos 0
+        </code>
+        <p class="mb-2">Соответвенно, чтобы получить такую маску нужно заполнить поля следующим образом:</p>
+        <code class="mb-2">
+          #define DW0_[var]_Msk [msk]<br>
+          #define DW0_[var]_Pos [pos]
+        </code>
+        <p class="mb-2">Для пакета данных можно написать маски таким образом, чтобы номер СД заполнялся автоматически:</p>
+        <code class="mb-2">
+          #define DW[ndw]_[var]_Msk [msk]<br>
+          #define DW[ndw]_[var]_Pos [pos]
+        </code>
+      </div>
+    </section>
+
+    <section class="container" id="maskTemplate">
+      <h3 class="border-bottom pb-2 mb-3">Пример использования масок</h3>
+      <div class="accordion mb-4" id="accordionExample">
+        <div class="accordion-item">
+          <h4 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              Пример использования масок на языке C
+            </button>
+          </h4>
+          <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              Ниже представлен пример использования масок для упаковки и распарски пакетов данных МПИ на языке C. 
+              В нулевое слово данных записывается переменная Timer, занимающая 8-15 биты. 
+              Из первого слова данных парсится переменная Error, находящаяся в 5 бите.
+              Используйте упаковку в вашей программе до отправки данных по линии МПИ, 
+              а распарску после получения пакета данных (например, в прерывании или по таймеру).
+              <pre>
+              <code class="code-block">
+// Указывам маски
+#define DW0_Timer_Msk   0x00FF
+#define DW0_Timer_Pos   8
+#define DW1_Error_Msk   0x0020
+#define DW1_Error_Pos   5
+                
+// Буфер данных из 32 слов с выравниванием 16 бит
+uint16_t bufer[32] __attribute__((aligned(16)));
+                
+// Переменные
+uint8_t Timer;
+uint8_t Error;
+                
+// Функция записи переменной в слово данных
+void setData(uint16_t* buf, uint8_t word_number, uint16_t data, uint16_t mask, uint16_t pos){
+  buf[word_number] = buf[word_number] | ((data & mask) &lt;&lt; pos);
+}
+                
+// Функция распарски перменной из слова данных
+uint16_t getData(uint16_t* buf_addr, uint8_t word_number, uint16_t mask, uint16_t pos) {
+  return ((buf_addr[word_number] & mask) &gt;&gt; pos);
+}
+                
+int main(void)
+{ 
+  // Запишем тестовые данные
+  bufer[1] = 0x20;
+  Timer = 0xFF;
+                
+  // Распарска переменной из буфера
+  Error = getData(bufer, 1, DW1_Error_Mask, DW1_Error_Pos);
+                
+  // Запись переменной в буфер
+  setData(bufer, 0, Timer, DW0_Timer_Mask, DW0_Timer_Pos);
+                
+  printf("bufer[0] = %X\t Error = %X\n", bufer[0], Error);
+                
+  return 0;
+}
+
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="container" id="links">
+      <h3 class="border-bottom pb-2 mb-3">Ссылки</h3>
+      <p>
+        <a href="https://protect.gost.ru/document.aspx?control=7&id=129942" rel="noopener noreferrer" target="_blank" class="link-primary">ГОСТ Р 52070-2003</a>
+        - «Интерфейс магистральный последовательный. Системы электронных модулей. Общие требования».
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="bg-body-secondary mt-4 py-3">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="../index.html" class="nav-link px-2 text-body-secondary">Главная</a></li>
+      <li class="nav-item"><a href="command.html" class="nav-link px-2 text-body-secondary">Командное слово</a></li>
+      <li class="nav-item"><a href="data.html" class="nav-link px-2 text-body-secondary">Слово данных</a></li>
+      <li class="nav-item"><a href="pack.html" class="nav-link px-2 text-body-secondary">Пакет данных</a></li>
+      <li class="nav-item"><a href="help.html" class="nav-link px-2 text-body-secondary">Справка</a></li>
+    </ul>
+    <p class="text-center text-body-secondary">© 2025 Куликова Анна</p>
+  </footer>
+  
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  
+</body>
+</html>
